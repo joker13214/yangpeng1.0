@@ -37,14 +37,14 @@ namespace yangpeng1._0
             sqlCommand.CommandText = sql;
            // sqlCommand.EndExecuteNonQuery(); 此方法，可以执行insert、update、delete类型的sql语句，不能执行select
             SqlDataReader reader = sqlCommand.ExecuteReader();
-            //while (reader.Read())
-            //{
-            //    Department departmentData = new Department();
-            //    departmentData.Departmentid= (int)reader["Departmentid"];
-            //    departmentData.DepartmentName = (string)reader["DepartmentName"];
-            //    departments.Add(departmentData);
-            //    //Console.WriteLine(reader["Departmentid"] + " " + reader["DepartmentName"]);
-            //}
+            while (reader.Read())
+            {
+                Department departmentData = new Department();
+                departmentData.Departmentid = (int)reader["Departmentid"];
+                departmentData.DepartmentName = (string)reader["DepartmentName"];
+                departments.Add(departmentData);
+                //Console.WriteLine(reader["Departmentid"] + " " + reader["DepartmentName"]);
+            }
             reader.Close();
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);//创建一个数据适配器（）
             DataSet dataSet = new DataSet();                               //创建数据集对象DataSet(内存数据库)DataTable
@@ -136,6 +136,26 @@ namespace yangpeng1._0
             //    departments.Add(departmentData);
             //}
               
+        }
+        //通用方法
+        public static int ExecuteNonQuery(string sql)
+        {
+            SqlConnection sqlConnection = new SqlConnection(connString);
+            SqlCommand sqlCommand = new SqlCommand(sql, sqlConnection);
+            try {
+                sqlConnection.Open();
+                return sqlCommand.ExecuteNonQuery();
+            }
+            catch(Exception ex)
+            {
+                //throw new Exception { "发生异常：" + ex.Message };
+                Console.WriteLine("出现异常");
+                return 0;
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
         }
     }
     
