@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace yangpeng1._0
 {
     //部门类
-    public class Department
+    public class Departments
     {
 
         public int Departmentid { get; set; }//部门编号

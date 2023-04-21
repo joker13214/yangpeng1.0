@@ -38,7 +38,7 @@ namespace yangpeng1._0
                 Console.Write(" ");
                 Console.WriteLine(Sqlserver.departments[i].DepartmentName);
             }
-    
+            dataGridView1.ColumnHeadersVisible = false; //列标题隐藏
             dataGridView1.DataSource = Sqlserver.departments;//list列表数据绑定到dataGridView中
         }
 
@@ -64,6 +64,27 @@ namespace yangpeng1._0
         {
             Sqlserver sqlserver = new Sqlserver();
             sqlserver.insert();
+        }
+
+        //LINQTest（Linq）
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //LINQ lINQ = new LINQ();
+            //lINQ.LINQTest();
+            DataClasses1DataContext linq = new DataClasses1DataContext(Sqlserver.connString); //创建一个LINQ对象
+            var data = from info in linq.Department
+                       select new
+                       {
+                           编号 = info.Departmentid,
+                           部门 = info.DepartmentName
+                       };
+
+            dataGridView1.DataSource = data;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

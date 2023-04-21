@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LinqKit;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -146,7 +147,7 @@ namespace yangpeng1._0
                 sqlConnection.Open();
                 return sqlCommand.ExecuteNonQuery();
             }
-            catch(Exception ex)
+            catch
             {
                 //throw new Exception { "发生异常：" + ex.Message };
                 Console.WriteLine("出现异常");
@@ -156,6 +157,14 @@ namespace yangpeng1._0
             {
                 sqlConnection.Close();
             }
+        }
+        //LINQ查询连接
+        public void test() {
+            DataClasses1DataContext linq =new DataClasses1DataContext(connString); //创建一个LINQ对象
+            var data = from info in linq.Department select new { 
+                编号=info.Departmentid,
+                部门=info.DepartmentName
+            };
         }
     }
     
