@@ -126,6 +126,16 @@ namespace yangpeng1._0
                 departments.Add(departmentData);
             }
             conn.Close();
+            //遍历DataTable的数据行
+            // Department departmentData = new Department();
+            //foreach (DataRow row in dataSet.Tables[0].Rows)
+            //{
+            //    Department departmentData = new Department(); //对象每次都要实例化
+            //    departmentData.Departmentid = (int)row["Departmentid"];
+            //    departmentData.DepartmentName = (string)row["DepartmentName"];
+            //    departments.Add(departmentData);
+            //}
+              
         }
     }
     

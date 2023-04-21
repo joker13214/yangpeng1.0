@@ -38,7 +38,7 @@ namespace yangpeng1._0
                 Console.Write(" ");
                 Console.WriteLine(Sqlserver.departments[i].DepartmentName);
             }
-
+            Console.WriteLine("上传成功！");
             dataGridView1.DataSource = Sqlserver.departments;//list列表数据绑定到dataGridView中
         }
 
@@ -63,7 +63,6 @@ namespace yangpeng1._0
         {
             Sqlserver sqlserver = new Sqlserver();
             sqlserver.insert();
-       
         }
     }
 }
