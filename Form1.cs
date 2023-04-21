@@ -46,6 +46,7 @@ namespace yangpeng1._0
         {
             //Client client = new Client();
             //client.Show();
+            Console.WriteLine("你好！");
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
