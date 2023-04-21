@@ -44,8 +44,8 @@ namespace yangpeng1._0
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Client client = new Client();
-            client.Show();
+            //Client client = new Client();
+            //client.Show();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
