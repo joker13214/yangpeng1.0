@@ -63,7 +63,6 @@ namespace yangpeng1._0
         {
             Sqlserver sqlserver = new Sqlserver();
             sqlserver.insert();
-       
         }
     }
 }
