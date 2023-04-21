@@ -71,6 +71,9 @@ namespace yangpeng1._0
         {
             //LINQ lINQ = new LINQ();
             //lINQ.LINQTest();
+            LINQ linq1 = new LINQ();
+            //linq1.DeleteData();           //删除数据库里面的部门信息
+            linq1.InsertData();             //插入部分信息
             DataClasses1DataContext linq = new DataClasses1DataContext(Sqlserver.connString); //创建一个LINQ对象
             var data = from info in linq.Department
                        select new
@@ -86,5 +89,6 @@ namespace yangpeng1._0
         {
 
         }
+       
     }
 }
