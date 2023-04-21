@@ -50,13 +50,11 @@ namespace yangpeng1._0
         public void UpData()
         {
             DataClasses1DataContext context = new DataClasses1DataContext(Sqlserver.connString);//连接数据库
-            //var newResult = from info in context.Department
-            //                where info.Departmentid==24
-            //                set 
-                             
-               
-
+            context.ExecuteCommand("update Department set DepartmentName = '杨鹏' where Departmentid = 18 ");
+            
         }
+
+
         
     }
 }

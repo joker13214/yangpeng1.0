@@ -166,6 +166,47 @@ namespace yangpeng1._0
                 部门=info.DepartmentName
             };
         }
+        //执行返回一个结果集的查询
+        public static SqlDataReader ExecuteReader(string sql)
+        {
+            SqlConnection sqlConnection = new SqlConnection(connString);
+            SqlCommand sqlCommand = new SqlCommand(sql, sqlConnection);
+            try
+            {
+                sqlConnection.Open();
+                return sqlCommand.ExecuteReader(CommandBehavior.CloseConnection);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("执行发生异常：" + ex.Message );
+            }
+
+        }
+        //返回一个数据集的查询
+        public static DataSet GetDataSet(string sql, string tableName = null)
+        {
+            SqlConnection sqlConnection = new SqlConnection(connString);
+            SqlCommand cmd = new SqlCommand(sql, sqlConnection);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet dataSet = new DataSet();
+            try
+            {
+                sqlConnection.Open();
+                if (tableName == null)
+                {
+                    da.Fill(dataSet);
+                }
+                else
+                {
+                    da.Fill(dataSet, tableName);
+                }
+                return dataSet;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("方法发生异常");
+            }
+        }
     }
     
 }
