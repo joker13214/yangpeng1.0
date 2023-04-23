@@ -81,7 +81,6 @@ namespace yangpeng1._0
                            编号 = info.Departmentid,
                            部门 = info.DepartmentName
                        };
-
             dataGridView1.DataSource = data;
         }
 
@@ -89,6 +88,14 @@ namespace yangpeng1._0
         {
 
         }
-       
+
+        //sqlserver数据库连接
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Sqlserver sqlserver = new Sqlserver();
+            string sqlname = "select * from Department";
+            DataSet data = Sqlserver.GetDataSet1(sqlname, "Department");
+            dataGridView2.DataSource = data;
+        }
     }
 }

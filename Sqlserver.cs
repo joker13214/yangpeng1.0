@@ -183,15 +183,16 @@ namespace yangpeng1._0
 
         }
         //返回一个数据集的查询
-        public static DataSet GetDataSet(string sql, string tableName = null)
+        public static DataSet GetDataSet1(string sql, string tableName = null)
         {
-            SqlConnection sqlConnection = new SqlConnection(connString);
-            SqlCommand cmd = new SqlCommand(sql, sqlConnection);
+            SqlConnection conn = new SqlConnection(connString);
+            SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataSet dataSet = new DataSet();
+            conn.Open();
             try
             {
-                sqlConnection.Open();
+                
                 if (tableName == null)
                 {
                     da.Fill(dataSet);
@@ -205,6 +206,38 @@ namespace yangpeng1._0
             catch(Exception ex)
             {
                 throw new Exception("方法发生异常");
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        //方法重载
+        public static DataSet GetDataSet2(Dictionary<string,string> dictionary)//key,value
+        {
+            SqlConnection conn = new SqlConnection(connString);
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet dataSet = new DataSet();
+            conn.Open();
+            try
+            {
+                foreach (string tbname in dictionary.Keys)
+                {
+                    cmd.CommandText = dictionary[tbname];
+                    da.Fill(dataSet, tbname);
+                }
+                return dataSet;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("方法发生异常");
+            }
+            finally
+            {
+                conn.Close();
             }
         }
     }
