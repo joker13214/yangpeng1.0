@@ -103,6 +103,7 @@
       <DependentUpon>Server.cs</DependentUpon>
     </Compile>
     <Compile Include="Sqlserver.cs" />
+    <Compile Include="高级通用类\CRUDAdvance.cs" />
     <EmbeddedResource Include="Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
     </EmbeddedResource>

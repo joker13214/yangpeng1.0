@@ -42,14 +42,15 @@ namespace yangpeng1._0
                 DepartmentName="温海菁"
             };
             context.Department.InsertOnSubmit(newDepartment);
-            context.SubmitChanges();
+            context.SubmitChanges();                  //创建LINQ连接提交操作
         }
 
         //LINQ更新部分信息
         public void UpData()
         {
             DataClasses1DataContext context = new DataClasses1DataContext(Sqlserver.connString);//连接数据库
-            context.ExecuteCommand("update Department set DepartmentName = '杨鹏' where Departmentid = 19 ");   
+            context.ExecuteCommand("update Department set DepartmentName = '杨鹏' where Departmentid = 19 ");//直接对数据库执行命令
+            
         }
     }
 }

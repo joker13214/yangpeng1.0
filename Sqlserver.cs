@@ -12,14 +12,14 @@ namespace yangpeng1._0
 {
     //数据库连接服务
    
-    public  class Sqlserver
+    public class Sqlserver
     {
-        // public string Connect_path = "server=192.168.110.196;Database=MISDB;uid=sa;pwd=123456";//连接数据库的操作
+        //public string Connect_path = "server=192.168.110.196;Database=MISDB;uid=sa;pwd=123456";//连接数据库的操作
         //public static string connString = "server=.;Database=MISDB;uid=sa;pwd=123456";
         public static string connString = ConfigurationManager.ConnectionStrings["connString"].ToString();
         public static List<Department> departments = new List<Department>(); //数据存储list列表
         //数据库连接服务
-        public  void SQL_connect(string tablename)
+        public void SQL_connect(string tablename)
         { 
             //创建连接对象
             SqlConnection conn = new SqlConnection(connString);
@@ -128,17 +128,16 @@ namespace yangpeng1._0
             }
             conn.Close();
             //遍历DataTable的数据行
-            // Department departmentData = new Department();
+            //Department departmentData = new Department();
             //foreach (DataRow row in dataSet.Tables[0].Rows)
             //{
             //    Department departmentData = new Department(); //对象每次都要实例化
             //    departmentData.Departmentid = (int)row["Departmentid"];
             //    departmentData.DepartmentName = (string)row["DepartmentName"];
             //    departments.Add(departmentData);
-            //}
-              
+            //}    
         }
-        //通用方法
+        //通用SQL方法
         public static int ExecuteNonQuery(string sql)
         {
             SqlConnection sqlConnection = new SqlConnection(connString);
@@ -183,7 +182,7 @@ namespace yangpeng1._0
 
         }
         //返回一个数据集的查询
-        public static DataSet GetDataSet1(string sql, string tableName = null)
+        public static DataSet GetDataSet(string sql, string tableName = null)
         {
             SqlConnection conn = new SqlConnection(connString);
             SqlCommand cmd = new SqlCommand(sql, conn);
@@ -213,7 +212,7 @@ namespace yangpeng1._0
             }
         }
         //方法重载
-        public static DataSet GetDataSet2(Dictionary<string,string> dictionary)//key,value
+        public static DataSet GetDataSet(Dictionary<string,string> dictionary)//key,value
         {
             SqlConnection conn = new SqlConnection(connString);
             SqlCommand cmd = new SqlCommand();
