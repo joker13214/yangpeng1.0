@@ -73,15 +73,15 @@ namespace yangpeng1._0
             //lINQ.LINQTest();
             LINQ linq1 = new LINQ();
             //linq1.DeleteData();           //删除数据库里面的部门信息
-            linq1.UpData();             //插入部分信息
-            DataClasses1DataContext linq = new DataClasses1DataContext(Sqlserver.connString); //创建一个LINQ对象
-            var data = from info in linq.Department
-                       select new
-                       {
-                           编号 = info.Departmentid,
-                           部门 = info.DepartmentName
-                       };
-            dataGridView1.DataSource = data;
+            linq1.LinqTest();             //插入部分信息
+            //DataClasses1DataContext linq = new DataClasses1DataContext(Sqlserver.connString); //创建一个LINQ对象
+            //var data = from info in linq.Department
+            //           select new
+            //           {
+            //               编号 = info.Departmentid,
+            //               部门 = info.DepartmentName
+            //           };
+            //dataGridView1.DataSource = data;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -92,10 +92,10 @@ namespace yangpeng1._0
         //sqlserver数据库连接
         private void button6_Click(object sender, EventArgs e)
         {
-            Sqlserver sqlserver = new Sqlserver();
-            string sqlname = "select * from Department";
-            DataSet data = Sqlserver.GetDataSet1(sqlname, "Department");
-            dataGridView2.DataSource = data;
+            //Sqlserver sqlserver = new Sqlserver();
+            //string sqlname = "select * from Department";
+            //DataSet data = Sqlserver.GetDataSet1(sqlname, "Department");
+            //dataGridView2.DataSource = data;
         }
     }
 }
